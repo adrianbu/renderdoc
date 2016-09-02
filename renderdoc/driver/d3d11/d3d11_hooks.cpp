@@ -32,6 +32,7 @@
 
 ID3DDevice *GetD3D11DeviceIfAlloc(IUnknown *dev)
 {
+  RDCLOG("Checking %p against D3D11", dev);
   if(WrappedID3D11Device::IsAlloc(dev))
     return (WrappedID3D11Device *)dev;
 

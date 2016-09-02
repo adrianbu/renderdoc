@@ -571,7 +571,9 @@ public:
   {
     for(size_t i = 0; i < m_D3DCallbacks.size(); i++)
     {
+      RDCLOG("Trying callback %u", (uint32_t)i);
       ID3DDevice *d3d = m_D3DCallbacks[i](dev);
+      RDCLOG("Got %p", d3d);
       if(d3d)
         return d3d;
     }

@@ -51,6 +51,8 @@ ID3DDevice *GetD3DDevice(IUnknown *pDevice)
 {
   ID3DDevice *wrapDevice = NULL;
 
+  RDCLOG("Getting D3D device from %p", pDevice);
+
   if(WrappedIDXGIDevice::IsAlloc(pDevice) || WrappedIDXGIDevice1::IsAlloc(pDevice) ||
      WrappedIDXGIDevice2::IsAlloc(pDevice) || WrappedIDXGIDevice3::IsAlloc(pDevice))
   {
@@ -65,7 +67,10 @@ ID3DDevice *GetD3DDevice(IUnknown *pDevice)
   }
 
   if(wrapDevice == NULL)
+  {
+    RDCLOG("Not DXGI - looking up in map");
     wrapDevice = WrappedIDXGISwapChain3::GetD3DDevice(pDevice);
+  }
 
   return wrapDevice;
 }

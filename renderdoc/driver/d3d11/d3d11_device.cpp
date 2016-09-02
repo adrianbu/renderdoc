@@ -304,6 +304,8 @@ WrappedID3D11Device::WrappedID3D11Device(ID3D11Device *realDevice, D3D11InitPara
   if(RenderDoc::Inst().GetCrashHandler())
     RenderDoc::Inst().GetCrashHandler()->RegisterMemoryRegion(this, sizeof(WrappedID3D11Device));
 
+  RDCLOG("Created WrappedID3D11Device %p", this);
+
   m_pDevice1 = NULL;
   m_pDevice->QueryInterface(__uuidof(ID3D11Device1), (void **)&m_pDevice1);
 

@@ -445,6 +445,8 @@ bool RefCountDXGIObject::HandleWrap(REFIID riid, void **ppvObject)
     return false;
   }
 
+  RDCLOG("RefCountDXGIObject::HandleWrap %s %p", ToStr::Get(riid).c_str(), *ppvObject);
+
   if(riid == __uuidof(IDXGIDevice))
   {
     // should have been handled elsewhere, so we can properly create this device
@@ -606,6 +608,8 @@ HRESULT STDMETHODCALLTYPE WrappedIDXGISwapChain3::QueryInterface(REFIID riid, vo
 
 HRESULT STDMETHODCALLTYPE WrappedIDXGIDevice::QueryInterface(REFIID riid, void **ppvObject)
 {
+  RDCLOG("WrappedIDXGIDevice::QueryInterface %s %p", ToStr::Get(riid).c_str(), this);
+
   if(riid == m_pD3DDevice->GetDeviceUUID())
   {
     m_pD3DDevice->AddRef();
@@ -623,6 +627,8 @@ HRESULT STDMETHODCALLTYPE WrappedIDXGIDevice::QueryInterface(REFIID riid, void *
 
 HRESULT STDMETHODCALLTYPE WrappedIDXGIDevice1::QueryInterface(REFIID riid, void **ppvObject)
 {
+  RDCLOG("WrappedIDXGIDevice1::QueryInterface %s %p", ToStr::Get(riid).c_str(), this);
+
   HRESULT hr = S_OK;
 
   if(riid == m_pD3DDevice->GetDeviceUUID())
@@ -678,6 +684,8 @@ HRESULT STDMETHODCALLTYPE WrappedIDXGIDevice1::QueryInterface(REFIID riid, void 
 
 HRESULT STDMETHODCALLTYPE WrappedIDXGIDevice2::QueryInterface(REFIID riid, void **ppvObject)
 {
+  RDCLOG("WrappedIDXGIDevice2::QueryInterface %s %p", ToStr::Get(riid).c_str(), this);
+
   if(riid == m_pD3DDevice->GetDeviceUUID())
   {
     m_pD3DDevice->AddRef();
@@ -722,6 +730,8 @@ HRESULT STDMETHODCALLTYPE WrappedIDXGIDevice2::QueryInterface(REFIID riid, void 
 
 HRESULT STDMETHODCALLTYPE WrappedIDXGIDevice3::QueryInterface(REFIID riid, void **ppvObject)
 {
+  RDCLOG("WrappedIDXGIDevice3::QueryInterface %s %p", ToStr::Get(riid).c_str(), this);
+
   if(riid == m_pD3DDevice->GetDeviceUUID())
   {
     m_pD3DDevice->AddRef();

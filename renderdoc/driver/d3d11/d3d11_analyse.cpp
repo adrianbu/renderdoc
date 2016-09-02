@@ -1202,7 +1202,7 @@ ShaderDebugTrace D3D11DebugManager::DebugVertex(uint32_t eventID, uint32_t verti
 
   states.push_back((State)initialState);
 
-  for(;;)
+  for(size_t i = 0; i < dxbc->GetNumInstructions() * 100; i++)
   {
     if(initialState.Finished())
       break;
